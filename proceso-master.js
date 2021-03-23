@@ -3,7 +3,7 @@ const cluster = require('cluster');
 console.log(`PID master: ${process.pid}`);
 
 cluster.setupMaster({
-    exec: __dirname + 'servicio-fibonacci.js'
+    exec: __dirname + '/servicio-fibonacci.js'
 });
 
 cluster.fork();
@@ -16,5 +16,5 @@ cluster.on('disconnect', (worker) => {
     cluster.fork();
 }).on('listening', (worker, {address, port}) => {
     console.log(`Escuchando: ${address}:${port}`);
-})
+});
 
